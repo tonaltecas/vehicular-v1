@@ -1,26 +1,259 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Inspección de Vehículos</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* ... Tus estilos CSS personalizados ... */
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Inspección de Vehículos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilos base para enfocar los inputs */
+        .input-focus:focus {
+            outline: none;
+            border-color: #3b82f6; /* Tailwind blue-500 */
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4); 
+        }
+        /* Estilos para el texto del label (opcional, mejora la legibilidad) */
+        .label-text {
+            font-weight: 500; /* Medium */
+            color: #374151; /* Gray-700 */
+        }
+    </style>
 </head>
 <body class="bg-gray-50 flex items-center justify-center min-h-screen p-6">
 
-    <div class="bg-white p-8 md:p-10 rounded-xl shadow-2xl w-full max-w-4xl">
-        
-        <h2 class="text-3xl font-extrabold text-gray-900 mb-2 border-b pb-2">Inspección Diaria de Unidad</h2>
-            </div>
-    <script>
-        // Asegúrate de que esta URL sea la de tu implementación de Google Apps Script
-        const scriptURL = 'TU_URL_DE_IMPLEMENTACION_COPIADA_AQUI/exec'; 
-        const form = document.getElementById('myForm');
-        const status = document.getElementById('status');
-        // ... El resto del código JavaScript para enviar el formulario ...
-    </script>
+    <div class="bg-white p-8 md:p-10 rounded-xl shadow-2xl w-full max-w-4xl">
+        
+        <h2 class="text-3xl font-extrabold text-gray-900 mb-2 border-b pb-2">Inspección Diaria de Unidad</h2>
+        <p class="text-gray-600 mb-8">Completa los siguientes campos para reportar el estado del vehículo.</p>
+
+        <form action="#" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6" id="myForm">
+
+            <div class="md:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-6 border-b pb-6 mb-6">
+                
+                <div>
+                    <label for="fecha" class="block text-sm label-text mb-1">1) Fecha</label>
+                    <input 
+                        type="date" 
+                        id="fecha" 
+                        name="fecha" 
+                        required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg input-focus transition duration-150"
+                    >
+                </div>
+
+                <div>
+                    <label for="vehiculo" class="block text-sm label-text mb-1">2) Vehículo</label>
+                    <select 
+                        id="vehiculo" 
+                        name="vehiculo" 
+                        required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg input-focus transition duration-150 bg-white"
+                    >
+                        <option value="" disabled selected>Selecciona un vehículo</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                        <option value="C.PERSONAL">C.PERSONAL</option>
+                        <option value="FIT">FIT</option>
+                        <option value="VOLVO">VOLVO</option>
+                        <option value="YARIS">YARIS</option>
+                        <option value="JETTA">JETTA</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="chofer" class="block text-sm label-text mb-1">3) CHOFER</label>
+                    <input 
+                        type="text" 
+                        id="chofer" 
+                        name="chofer" 
+                        required 
+                        placeholder="Nombre completo"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg input-focus transition duration-150"
+                    >
+                </div>
+
+            </div>
+            
+            <div>
+                <label for="combustible" class="block text-sm label-text mb-1">4) Nivel de combustible</label>
+                <select id="combustible" name="combustible" required class="w-full px-4 py-2 border border-gray-300 rounded-lg input-focus transition duration-150 bg-white">
+                    <option value="" disabled selected>Selecciona el nivel</option>
+                    <option value="1/4">¼</option>
+                    <option value="1/2">½</option>
+                    <option value="3/4">¾</option>
+                    <option value="LLENO">LLENO</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="motor" class="block text-sm label-text mb-1">5) ¿Algún Problema con el motor?</label>
+                <select id="motor" name="motor" required class="w-full px-4 py-2 border border-gray-300 rounded-lg input-focus transition duration-150 bg-white">
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="Correcto">Todo Correcto</option>
+                    <option value="Problema">Escucho un Problema</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="anticongelante" class="block text-sm label-text mb-1">6) Anticongelante / Agua</label>
+                <select id="anticongelante" name="anticongelante" required class="w-full px-4 py-2 border border-gray-300 rounded-lg input-focus transition duration-150 bg-white">
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="Correctos">Niveles correctos</option>
+                    <option value="Fuga">Hay fuga</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="llantas" class="block text-sm label-text mb-1">7) ¿Problema con alguna llanta?</label>
+                <select id="llantas" name="llantas" required class="w-full px-4 py-2 border border-gray-300 rounded-lg input-focus transition duration-150 bg-white">
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="Sin Problemas">Sin Problemas</option>
+                    <option value="Problema">Si hay problema</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="golpes" class="block text-sm label-text mb-1">8) ¿Algún golpe nuevo?</label>
+                <select id="golpes" name="golpes" required class="w-full px-4 py-2 border border-gray-300 rounded-lg input-focus transition duration-150 bg-white">
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="Sin Problemas">Sin problemas</option>
+                    <option value="Nuevo">Nuevo golpe</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="luces" class="block text-sm label-text mb-1">9) ¿Algún tema con las luces?</label>
+                <select id="luces" name="luces" required class="w-full px-4 py-2 border border-gray-300 rounded-lg input-focus transition duration-150 bg-white">
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="Sin Problemas">Sin problemas</option>
+                    <option value="Problemas">Si tengo problemas</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="frenos" class="block text-sm label-text mb-1">10) ¿Algún problema con frenos?</label>
+                <select id="frenos" name="frenos" required class="w-full px-4 py-2 border border-gray-300 rounded-lg input-focus transition duration-150 bg-white">
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="SI">SI</option>
+                    <option value="NO">NO</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="bateria" class="block text-sm label-text mb-1">11) ¿Problema con Batería o Arranque?</label>
+                <select id="bateria" name="bateria" required class="w-full px-4 py-2 border border-gray-300 rounded-lg input-focus transition duration-150 bg-white">
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="SI">SI</option>
+                    <option value="NO">NO</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="claxon" class="block text-sm label-text mb-1">12) ¿Problema con Claxon o Alarma de Reversa?</label>
+                <select id="claxon" name="claxon" required class="w-full px-4 py-2 border border-gray-300 rounded-lg input-focus transition duration-150 bg-white">
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="SI">SI</option>
+                    <option value="NO">NO</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="circulacion" class="block text-sm label-text mb-1">13) ¿Tengo la tarjeta de circulación?</label>
+                <select id="circulacion" name="circulacion" required class="w-full px-4 py-2 border border-gray-300 rounded-lg input-focus transition duration-150 bg-white">
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="SI">SI</option>
+                    <option value="NO">NO</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="seguro" class="block text-sm label-text mb-1">14) ¿Tengo la póliza de seguro?</label>
+                <select id="seguro" name="seguro" required class="w-full px-4 py-2 border border-gray-300 rounded-lg input-focus transition duration-150 bg-white">
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="SI">SI</option>
+                    <option value="NO">NO</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="licencia" class="block text-sm label-text mb-1">15) ¿Tengo Licencia de Manejo?</label>
+                <select id="licencia" name="licencia" required class="w-full px-4 py-2 border border-gray-300 rounded-lg input-focus transition duration-150 bg-white">
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="SI">SI</option>
+                    <option value="NO">NO</option>
+                </select>
+            </div>
+
+            <div class="md:col-span-2 mt-4">
+                <label for="explicacion" class="block text-sm label-text mb-1">16) Explica aquí todos los problemas que mencionaste anteriormente</label>
+                <textarea 
+                    id="explicacion" 
+                    name="explicacion" 
+                    rows="4" 
+                    placeholder="Describe los problemas, fugas o golpes nuevos con el mayor detalle posible."
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus transition duration-150 resize-none"
+                ></textarea>
+            </div>
+<div id="status" class="md:col-span-2 text-center text-sm font-medium mt-2">
+</div>
+
+<div class="md:col-span-2 mt-4">
+<button 
+// ...
+            <div class="md:col-span-2 mt-4">
+                <button 
+                    type="submit" 
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition duration-200 ease-in-out shadow-lg transform hover:scale-[1.01]"
+                >
+                    Enviar Reporte de Inspección
+                </button>
+            </div>
+            
+        </form>
+
+    </div>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycby9pP94fCejHnlXlQQB1ObyK4ccHeL9cZv8h_2YlnYQJeNez1GDHso8Ti_neFTAlINc2w/exec'; // <-- ¡REEMPLAZA ESTO!
+        const form = document.getElementById('myForm');
+        const status = document.getElementById('status');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault(); // Evita el envío tradicional del formulario
+            status.textContent = 'Enviando...';
+            status.style.color = 'blue';
+
+            // Envía los datos usando Fetch API a tu script de Google
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    status.textContent = '¡Datos guardados con éxito!';
+                    status.style.color = 'green';
+                    form.reset(); // Limpia el formulario
+                    console.log('Success!', response);
+                })
+                .catch(error => {
+                    status.textContent = 'Error al guardar. Intenta de nuevo.';
+                    status.style.color = 'red';
+                    console.error('Error!', error.message);
+                });
+        });
+    </script>
 </body>
 </html>
